@@ -1,0 +1,62 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ProjectLukas.Users"
+             xmlns:local="clr-namespace:ProjectLukas">
+    <ContentPage.Content>
+        <StackLayout BackgroundColor="#e5e5e5">
+            <Grid ColumnDefinitions="1*, 1*" RowDefinitions="50, 1">
+                <SearchBar Grid.Row="0" Grid.Column="1" x:Name="TableSearch" TextChanged="OnSearchBarChanged" Placeholder="Search" FontSize="15"></SearchBar>
+                <Picker Grid.Row="0" Grid.Column="0" x:Name="ShowPicker" Title="Show" SelectedIndexChanged="OnSelectedIndexChanged" FontSize="15" Margin="20,-7">
+                    <Picker.ItemsSource>
+                        <x:Array Type="{x:Type x:Int16}">
+                            <x:Int16>1</x:Int16>
+                            <x:Int16>5</x:Int16>
+                            <x:Int16>10</x:Int16>
+                            <x:Int16>25</x:Int16>
+                            <x:Int16>50</x:Int16>
+                            <x:Int16>100</x:Int16>
+                            <x:Int16>1000</x:Int16>
+                        </x:Array>
+                    </Picker.ItemsSource>
+                </Picker>
+            </Grid>
+            <Button Text="Export CSV" WidthRequest="120" HorizontalOptions="Center" BackgroundColor="Orange" CornerRadius="5"></Button>
+            <Grid Margin="10,0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="60"  />
+                </Grid.RowDefinitions>
+                <BoxView Grid.Row="0" Grid.ColumnSpan="3" BackgroundColor="#029788"  Margin="20,20,20,0"></BoxView>
+                <Label Text="User ID"  Grid.Column="0" Margin="20,20,20,0" FontSize="15" FontAttributes="Bold" TextColor="White"  BackgroundColor="#029788" HorizontalOptions="Center" VerticalOptions="CenterAndExpand">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="OnId"></TapGestureRecognizer>
+                    </Label.GestureRecognizers>
+                </Label>
+                <Label Text="E-mail" Grid.Column="1" Margin="20,20,20,0" FontSize="15" FontAttributes="Bold" TextColor="White"  BackgroundColor="#029788"  VerticalOptions="Center">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="OnEmail"></TapGestureRecognizer>
+                    </Label.GestureRecognizers>
+                </Label>
+                <Label Text="Time created" Grid.Column="2" Margin="20,20,20,0" FontSize="15" FontAttributes="Bold" TextColor="White"  BackgroundColor="#029788" HorizontalOptions="Start" VerticalOptions="Center">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="OnTime"></TapGestureRecognizer>
+                    </Label.GestureRecognizers>
+                </Label>
+                    <ListView Grid.Row="1" Grid.ColumnSpan="3" x:Name="UserRecordTable" RowHeight="50" Margin="20,0,20,20" Background="White">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <StackLayout Orientation="Horizontal" Spacing="5">
+                                    <Label Grid.Column="0" Text="{Binding Id}" TextColor="Black" FontSize="12"  VerticalTextAlignment="Center" HorizontalOptions="StartAndExpand" Margin="15,0"/>
+                                    <Label Grid.Column="1" Text="{Binding Email}" TextColor="Black" FontSize="12"  VerticalTextAlignment="Center" HorizontalOptions="CenterAndExpand"/>
+                                    <Label Grid.Column="2" Text="{Binding CreateTime}" TextColor="Black" FontSize="12"   VerticalTextAlignment="Center" HorizontalOptions="EndAndExpand" Margin="0,0,15,0"/>
+                                </StackLayout>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </Grid>
+
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

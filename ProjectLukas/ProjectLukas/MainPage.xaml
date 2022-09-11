@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ProjectLukas.MainPage"
+             NavigationPage.HasNavigationBar="False">
+    <StackLayout x:Name="SignupLogin" Margin="20" VerticalOptions="Center" Spacing="20" Orientation="Vertical">
+        <Image x:Name="LogoImage" Source="Logo.png" BackgroundColor="#029788" VerticalOptions="Start"/>
+            <Entry Placeholder="Enter New Email" x:Name="UserNewEmail" IsVisible="False"></Entry>
+            <Entry Placeholder="Enter New Password" x:Name="UserNewPassword" IsVisible="False" IsPassword="True"></Entry>
+            <Button BackgroundColor="#029788" TextColor="White" Text="Sign Up" Clicked="SignUpClicked" x:Name="SignUpButton" IsVisible="False"></Button>
+            <Entry Placeholder="User Email" x:Name="UserLoginEmail"></Entry>
+            <Entry Placeholder="User Password" x:Name="UserLoginPassword" IsPassword="true"></Entry>
+            <Button BackgroundColor="#029788" TextColor="White" Text="Log In" Clicked="LoginClicked" x:Name="LogInButton"></Button>
+            <BoxView HeightRequest="1" HorizontalOptions="FillAndExpand" BackgroundColor="Gray"></BoxView>
+            <Label Text="Register" TextColor="LightBlue" x:Name="SignUpLabel" HorizontalOptions="Center">
+                <Label.GestureRecognizers>
+                    <TapGestureRecognizer Tapped="OnSignUp" />
+                </Label.GestureRecognizers>
+            </Label>
+        <Label Text="Log In" TextColor="LightBlue" x:Name="LoginLabel" IsVisible="false" HorizontalOptions="Center">
+            <Label.GestureRecognizers>
+                <TapGestureRecognizer Tapped="OnLogIn"/>
+            </Label.GestureRecognizers>
+        </Label>
+    </StackLayout>
+</ContentPage>

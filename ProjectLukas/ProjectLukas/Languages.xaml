@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ProjectLukas.Languages"
+              xmlns:local="clr-namespace:ProjectLukas">
+    <ContentPage.Content>
+        <StackLayout>
+            <Grid Margin="10,0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="60"  />
+                </Grid.RowDefinitions>
+                <Label Text="Languages"  Grid.Column="0" Margin="20,20,20,0" FontSize="15" FontAttributes="Bold" TextColor="White"  BackgroundColor="#029788" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" WidthRequest="300" HeightRequest="30" HorizontalTextAlignment="Center" VerticalTextAlignment="Center">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="OnLanguageTapped"></TapGestureRecognizer>
+                    </Label.GestureRecognizers>
+                </Label>
+                <ListView Grid.Row="1" Grid.ColumnSpan="1" x:Name="LanguageTable" RowHeight="50" Margin="20,0,20,20" Background="White">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <StackLayout Orientation="Horizontal" Spacing="5">
+                                <Label Grid.Column="0" Text="{Binding}" TextColor="Black" FontSize="12"  VerticalTextAlignment="Center" HorizontalOptions="CenterAndExpand" Margin="15,0" HorizontalTextAlignment="Center"/>
+                            </StackLayout>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </Grid>
+            <Button Grid.Column="1"  Text="Export CSV" WidthRequest="120" HorizontalOptions="Center" BackgroundColor="Orange" CornerRadius="5" Margin="0,0,0,0"></Button>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

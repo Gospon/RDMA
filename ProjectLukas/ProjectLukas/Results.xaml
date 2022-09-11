@@ -1,0 +1,111 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ProjectLukas.Results"
+             xmlns:sys="clr-namespace:System;assembly=mscorlib"
+             xmlns:local="clr-namespace:ProjectLukas">
+    <ContentPage.Content>
+        <StackLayout BackgroundColor="#e5e5e5">
+            <Grid ColumnDefinitions="1*, 1*" RowDefinitions="50, 1">
+                <Entry Placeholder="Enter User ID" x:Name="UserID" Grid.Column="0" FontSize="15" HorizontalTextAlignment="Center"></Entry>
+                <Entry Placeholder="Enter User Email" x:Name="UserEmail" Grid.Column="1" FontSize="15" HorizontalTextAlignment="Center"></Entry>
+                <Entry Placeholder="Enter Exercise ID" x:Name="UserExerciseID" Grid.Column="2" FontSize="15" HorizontalTextAlignment="Center"></Entry>
+            </Grid>
+            <Grid ColumnDefinitions="1*, 1*" RowDefinitions="20, 20">
+                <Label Text="Result" Grid.Row="1" Grid.Column="0" FontSize="15" Margin="20,-10"></Label>
+                <Label Text="Result" Grid.Column="1" FontSize="15"  Margin="-45,0"></Label>
+                <Label Text="Score"  Grid.Row="1" Grid.Column="1" FontSize="15"  Margin="-43,0"></Label>
+                <Label Text="Result" Grid.Column="2" FontSize="15"  Margin="-115,0"></Label>
+                <Label Text="Max"  Grid.Row="1" Grid.Column="2" FontSize="15"  Margin="-110,0"></Label>
+                <Label Text="Date Range"  Grid.Row="1" Grid.Column="2" FontSize="15"  Margin="-20,-10"></Label>
+            </Grid>
+            <Grid ColumnDefinitions="1*, 1*" RowDefinitions="50, 50">
+                <Entry Placeholder="Min" x:Name="ResultMin" Grid.Row="0"  Grid.Column="0" FontSize="15" HorizontalOptions="Start" WidthRequest="50" HorizontalTextAlignment="Center" Margin="15,0"></Entry>
+                <Entry Placeholder="Max" x:Name="ResultMax" Grid.Row="1"  Grid.Column="0" FontSize="15"  HorizontalOptions="Start" WidthRequest="50" HorizontalTextAlignment="Center" Margin="15,0" ></Entry>
+                <Entry Placeholder="Min" x:Name="ResultScoreMin" Grid.Row="0"  Grid.Column="1" FontSize="15"  HorizontalOptions="Start" WidthRequest="50" HorizontalTextAlignment="Center" Margin="-20,0"></Entry>
+                <Entry Placeholder="Max" x:Name="ResulScoretMax" Grid.Row="1"  Grid.Column="1" FontSize="15"  HorizontalOptions="Start" WidthRequest="50" HorizontalTextAlignment="Center" Margin="-20,0"></Entry>
+                <Entry Placeholder="Min" x:Name="ResultMaxMin" Grid.Row="0"  Grid.Column="2" FontSize="15"  HorizontalOptions="Start" WidthRequest="50" HorizontalTextAlignment="Center" Margin="-55,0"></Entry>
+                <Entry Placeholder="Max" x:Name="ResultMaxMax" Grid.Row="1"  Grid.Column="2" FontSize="15"  HorizontalOptions="Start" WidthRequest="50" HorizontalTextAlignment="Center" Margin="-55,0"></Entry>
+                <DatePicker x:Name="MinDate"  Grid.Row="0" Grid.Column="3" FontSize="15"  Margin="-60,0,0,0"  HorizontalOptions="Start" WidthRequest="100" TextColor="Black"/>
+                <DatePicker x:Name ="MaxDate" Grid.Row="1" Grid.Column="3" FontSize="15" Margin="-60,0,0,0"  HorizontalOptions="Start" WidthRequest="100" TextColor="Black"/>
+            </Grid>
+            <Grid ColumnDefinitions="1*, 1*" RowDefinitions="50, 1">
+                <Picker Grid.Column="0" x:Name="LanguagePicker" Title="Select a language" FontSize="15" HorizontalOptions="Start" WidthRequest="150" Margin="35,0"></Picker>
+                <Picker Grid.Column="1" x:Name="SkillPicker" Title="Select a skill" FontSize="15" HorizontalOptions="Start" WidthRequest="100" Margin="40,0"></Picker>
+            </Grid>
+            <Grid ColumnDefinitions="1*, 1*" RowDefinitions="50, 1">
+                <Button Grid.Column="0" Text="Filter" WidthRequest="120" HorizontalOptions="Center" BackgroundColor="#029788" CornerRadius="5" TextColor="White"  Margin="5,0,0,0" Clicked="OnFilter"></Button>
+                <Button Grid.Column="1"  Text="Export CSV" WidthRequest="120" HorizontalOptions="Center" BackgroundColor="Orange" CornerRadius="5" Margin="0,0,0,0"></Button>
+                <Button Grid.Column="2" Text="Clear" WidthRequest="120" HorizontalOptions="Center" BackgroundColor="#029788" CornerRadius="5" TextColor="White"  Margin="-5,0,0,0" Clicked="OnClear"></Button>
+            </Grid>
+            <BoxView HeightRequest="3" HorizontalOptions="CenterAndExpand" BackgroundColor="LightGray"  WidthRequest="250"></BoxView>
+            <Grid ColumnDefinitions="1*, 1*" RowDefinitions="50, 1">
+                <SearchBar Grid.Row="0" Grid.Column="1" x:Name="TableSearch" Placeholder="Search" FontSize="15" TextChanged="OnSearchBarChanged"></SearchBar>
+                <Picker Grid.Row="0" Grid.Column="0" x:Name="ShowPicker" Title="Show" FontSize="15" Margin="20,-7" SelectedIndexChanged="OnSelectedIndexChanged"></Picker>
+            </Grid>
+            <Grid Margin="10,0" BackgroundColor="#029788">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="50"  />
+                </Grid.RowDefinitions>
+                <Label Text="User ID"  Grid.Column="0" FontSize="11" FontAttributes="Bold" TextColor="White"  BackgroundColor="#029788" VerticalOptions="CenterAndExpand" Margin="5,0">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="OnUserId"></TapGestureRecognizer>
+                    </Label.GestureRecognizers>
+                </Label>
+                <Label Text="E-mail" Grid.Column="1"  FontSize="11" FontAttributes="Bold" TextColor="White"  BackgroundColor="#029788" VerticalOptions="Center">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="OnEmail"></TapGestureRecognizer>
+                    </Label.GestureRecognizers>
+                </Label>
+                <Label Text="Exercise ID"  Grid.Column="2"  FontSize="11" FontAttributes="Bold" TextColor="White"  BackgroundColor="#029788" VerticalOptions="Center">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="OnExerciseId"></TapGestureRecognizer>
+                    </Label.GestureRecognizers>
+                </Label>
+                <Label Text="Result Percent" Grid.Column="3"  FontSize="11" FontAttributes="Bold" TextColor="White"  BackgroundColor="#029788"  VerticalOptions="Center">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="OnResultPercent"></TapGestureRecognizer>
+                    </Label.GestureRecognizers>
+                </Label>
+                <Label Text="Result Score" Grid.Column="4" FontSize="11" FontAttributes="Bold" TextColor="White"  BackgroundColor="#029788"  VerticalOptions="Center">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="OnResultScore"></TapGestureRecognizer>
+                    </Label.GestureRecognizers>
+                </Label>
+                <Label Text="Result Max" Grid.Column="5"  FontSize="11" FontAttributes="Bold" TextColor="White"  BackgroundColor="#029788"  VerticalOptions="Center">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="OnResultMax"></TapGestureRecognizer>
+                    </Label.GestureRecognizers>
+                </Label>
+                <Label Text="Skill"  Grid.Column="6"  FontSize="11" FontAttributes="Bold" TextColor="White"  BackgroundColor="#029788" VerticalOptions="Center">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="OnSkill"></TapGestureRecognizer>
+                    </Label.GestureRecognizers>
+                </Label>
+                <Label Text="Language" Grid.Column="7" FontSize="11" FontAttributes="Bold" TextColor="White"  BackgroundColor="#029788" VerticalOptions="Center" Margin="-10,0,0,0">
+                    <Label.GestureRecognizers>
+                        <TapGestureRecognizer Tapped="OnLanguage"></TapGestureRecognizer>
+                    </Label.GestureRecognizers>
+                </Label>
+                <ListView Grid.Row="1" Grid.ColumnSpan="8" x:Name="ResultRecordTable" RowHeight="50" Background="White">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <StackLayout Orientation="Horizontal" Spacing="20">
+                                    <Label Grid.Column="0" Text="{Binding Id}" TextColor="Black" FontSize="9" />
+                                    <Label Grid.Column="1" Text="{Binding Email}" TextColor="Black" FontSize="9"/>
+                                    <Label Grid.Column="2" Text="{Binding ExerciseId}" TextColor="Black" FontSize="8" />
+                                    <Label Grid.Column="3" Text="{Binding ResultPercent}" TextColor="Black" FontSize="9"/>
+                                    <Label Grid.Column="4" Text="{Binding ResultScore}" TextColor="Black" FontSize="9" />
+                                    <Label Grid.Column="5" Text="{Binding ResultMax}" TextColor="Black" FontSize="9"/>
+                                    <Label Grid.Column="6" Text="{Binding Skill}" TextColor="Black" FontSize="9" />
+                                    <Label Grid.Column="7" Text="{Binding Language}" TextColor="Black" FontSize="9"/>
+                                </StackLayout>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </Grid>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

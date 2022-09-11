@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<TabbedPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="ProjectLukas.Dashboard"
+             xmlns:local="clr-namespace:ProjectLukas"
+             NavigationPage.HasNavigationBar="False"
+            BarBackgroundColor="#08948c">
+    <local:Users IconImageSource="Users"/>
+    <local:Results IconImageSource="Results"/>
+    <local:Languages IconImageSource="Languages"/>
+    
+    <!--
+    <TabbedPage.Content>
+        <StackLayout VerticalOptions="EndAndExpand" Orientation="Vertical">
+            <Label x:Name="MyUserName" VerticalOptions="CenterAndExpand" HorizontalOptions="CenterAndExpand" />
+            <Button x:Name="Logout" Text="Logout" BackgroundColor="Black" TextColor="White" Clicked="logoutClicked"></Button>
+        </StackLayout>
+    </TabbedPage.Content>
+    -->
+</TabbedPage>
