@@ -1,0 +1,2 @@
+If Application cannot be built, firsly start Android Device Manager then start Emulator (API 12-31).
+Secondly, go back to application and run it on that emulator.
